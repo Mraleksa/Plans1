@@ -56,7 +56,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<2){piv ();}		
+		if (p<4){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
