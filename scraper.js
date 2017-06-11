@@ -83,7 +83,11 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
   						   }; })
   						  .entries(JSON.parse(json));
 						
-						console.log(nest[0].values)
+						
+						//dataset.forEach(function(item) {
+							
+						//})
+						console.log(nest[0].key+" : "+nest[0].values[0].key+" : "+nest[0].values[0].value.count)
 						//console.log(json.length)
 						
 						
