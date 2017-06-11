@@ -56,7 +56,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<2){piv ();}		
+		if (p<1){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -81,20 +81,18 @@ exporter.json('SELECT * FROM data', function (err, json) {
 						
 						var nest=d3.nest()
   						  .key(function(d) {return d.name;})
-						 // .key(function(d) {return d.procurementMethod;})
+						  .key(function(d) {return d.procurementMethod;})
   						  .sortKeys(d3.ascending)
   						  .rollup(function(v) { return {
-    							amount: v.amount,
-							procurementMethod: v.procurementMethod,  
-							// count: v.length, 
-							//total: d3.sum(v, function(d) { return d.amount; })
+    							 count: v.length, 
+							total: d3.sum(v, function(d) { return d.amount; })
   						   }; })
   						  .entries(JSON.parse(json));
 						
 						
 nest.forEach(function(item) {
 
-	console.log(JSON.stringify(item))
+	console.log(item.key+" : "+item.values[0].key+" : "+item.values[0].value.count)
 	
 	/*
 	db.serialize(function() {
