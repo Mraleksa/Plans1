@@ -56,7 +56,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<5){piv ();}		
+		if (p<10){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -64,7 +64,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 1) {
+				if (p2 < 3) {
 					piv ();
 				}
 				else {
@@ -93,7 +93,15 @@ nest.forEach(function(item) {
 	    
 //var res = item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count+" : "+item.values[2].key+" : "+item.values[2].value.count;
 
-console.log(JSON.stringify(item));	
+console.log(JSON.stringify(item));
+	
+	db.serialize(function() {
+		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT)");
+		var statement = db.prepare("INSERT INTO data2 VALUES (?)");
+		statement.run(JSON.stringify(item)); 
+		statement.finalize();
+	});
+	
 	/*
 	db.serialize(function() {
 		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,keyNo TEXT,countNo INT,keyLimited TEXT,countLimited INT,keyOpen TEXT,countOpen INT)");
