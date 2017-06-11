@@ -87,8 +87,8 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 						//dataset.forEach(function(item) {
 							
 						//})
-						console.log(nest[0].key+" : "+nest[0].values[0].key+" : "+nest[0].values[0].value.count+" : "+nest[0].values[1].key+" : "+nest[0].values[1].value.count)
-						//console.log(json.length)
+console.log(nest[1].key+" : "+nest[1].values[0].key+" : "+nest[1].values[0].value.count+" : "+nest[1].values[1].key+" : "+nest[1].values[1].value.count)
+
 						
 						
 					});		
