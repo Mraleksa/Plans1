@@ -80,7 +80,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
     							count: v.length,
 							total: d3.sum(v, function(d) { return d.amount; })
   						   }; })
-  						  .entries(JSON.parse(json));
+  						  .entries(JSON.parse(row));
 	 console.log(nest);
   });
 					
