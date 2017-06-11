@@ -91,7 +91,16 @@ exporter.json('SELECT * FROM data', function (err, json) {
 						
 
 for (var i = 0; i < 3; i++) {
-  console.log(nest[0].key+" : "+nest[0].values[i].key)	
+ try {
+
+console.log(nest[0].key+" : "+nest[0].values[i].key)	
+
+} catch (err) {
+
+ console.log("no")	
+
+}
+	
 }
 	
 					
