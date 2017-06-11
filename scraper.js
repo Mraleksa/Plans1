@@ -5,6 +5,7 @@ var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database("data.sqlite");
 
 
+
 	
 var currentCount =  "2017-04-20T12:38:09.008329+03:00"
 var p=0; var p2=0;
@@ -68,7 +69,29 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				}
 				else {
 					console.log("STOP");
-					db.run("DELETE FROM data");
+					///////////////////////////////
+					var db2 = new sqlite3.Database("data2.sqlite");
+					
+					db.each("SELECT rowid AS id, nameId FROM data", function(err, row) {
+      						console.log(row.id + ": " + row.nameId);
+							
+							  db2.serialize(function() {
+
+	db2.run("CREATE TABLE IF NOT EXISTS data2 (id TEXT,nameId TEXT)");
+
+		var statement = db2.prepare("INSERT INTO data2 VALUES (?,?)");
+
+		statement.run(row.id,row.nameId);
+  
+		statement.finalize();
+	});
+
+
+
+							  
+  					});
+					
+					///////////////////////////////
 				     }
 				}, 5000);
 		}		
