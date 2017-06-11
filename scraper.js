@@ -6,7 +6,7 @@ var db = new sqlite3.Database("data.sqlite");
 
 
 	
-var currentCount =  "2017-05-25T10:53:37.484602+03:00"
+var currentCount =  "2017-04-20T12:38:09.008329+03:00"
 var p=0; var p2=0;
    
    
