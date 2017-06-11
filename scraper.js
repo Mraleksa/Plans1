@@ -1,6 +1,7 @@
 var client = require('http-api-client');
 var sqlite3 = require("sqlite3").verbose();
 const sqliteJSON = require('sqlite-json');
+var d3 = require("d3");
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
 
