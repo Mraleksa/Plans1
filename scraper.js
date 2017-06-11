@@ -71,7 +71,17 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 					
 ///////////////////////////////		
  db.each("SELECT * FROM data", function(err, row) {
-      console.log(row);
+      
+	 var nest=d3.nest()
+  						  .key(function(d) {return d.name;})
+						  .key(function(d) {return d.procurementMethod;})
+  						  .sortKeys(d3.ascending)
+  						  .rollup(function(v) { return {
+    							count: v.length,
+							total: d3.sum(v, function(d) { return d.amount; })
+  						   }; })
+  						  .entries(JSON.parse(json));
+	 console.log(nest);
   });
 					
 						
