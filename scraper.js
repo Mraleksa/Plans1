@@ -70,40 +70,29 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				else {
 					
 ///////////////////////////////		
- db.each("SELECT * FROM data", function(err, row) {
-      
-	 var nest=d3.nest()
-  						  .key(function(d) {return d.name;})
-						  .key(function(d) {return d.procurementMethod;})
-  						  .sortKeys(d3.ascending)
-  						  .rollup(function(v) { return {
-    							count: v.length,
-							total: d3.sum(v, function(d) { return d.amount; })
-  						   }; })
-  						  .entries(JSON.parse(row));
-	 console.log(nest);
-  });
+
 					
 						
-//const exporter = sqliteJSON(db);
+const exporter = sqliteJSON(db);
 					
-//exporter.json('SELECT * FROM data', function (err, json) {
+exporter.json('SELECT * FROM data', function (err, json) {
 						//console.log(json)
 						
-						/*
+						
 						var nest=d3.nest()
   						  .key(function(d) {return d.name;})
-						  .key(function(d) {return d.procurementMethod;})
+						 // .key(function(d) {return d.procurementMethod;})
   						  .sortKeys(d3.ascending)
   						  .rollup(function(v) { return {
     							count: v.length,
 							total: d3.sum(v, function(d) { return d.amount; })
   						   }; })
   						  .entries(JSON.parse(json));
-						*/
 						
-//nest.forEach(function(item) {
+						
+nest.forEach(function(item) {
 
+	console.log(JSON.parse(item))
 	
 	/*
 	db.serialize(function() {
@@ -113,13 +102,13 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		statement.finalize();
 	});
 	*/
-//})						
+})						
 
 						
 
 						
 						
-//});		
+});		
 
 ///////////////////////////////
 					console.log("STOP");
