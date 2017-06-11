@@ -81,7 +81,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
   						   }; })
   						  .entries(json);
 						
-						console.log(nest)
+						console.log(JSON.parse(nest))
 						
 					});		
 					///////////////////////////////
