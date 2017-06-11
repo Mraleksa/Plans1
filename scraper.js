@@ -56,7 +56,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<10){piv ();}		
+		if (p<2){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -64,7 +64,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 20) {
+				if (p2 < 1) {
 					piv ();
 				}
 				else {
@@ -80,7 +80,7 @@ exporter.json('SELECT * FROM data', function (err, json) {
 						
 						
 						var nest=d3.nest()
-  						  .key(function(d) {return d.name;})
+  						  //.key(function(d) {return d.name;})
 						  .key(function(d) {return d.procurementMethod;})
   						  .sortKeys(d3.ascending)
   						  .rollup(function(v) { return {
@@ -90,8 +90,8 @@ exporter.json('SELECT * FROM data', function (err, json) {
   						  .entries(JSON.parse(json));
 						
 
-
-	
+console.log(JSON.stringify(nest))
+/*	
 					
 nest.forEach(function(item) {
 
@@ -115,7 +115,7 @@ statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values
 	});
 	
 })						
-
+*/
 						
 
 						
