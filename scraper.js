@@ -89,7 +89,9 @@ exporter.json('SELECT * FROM data', function (err, json) {
   						   }; })
   						  .entries(JSON.parse(json));
 						
-console.log(nest[0].key+" : "+nest[0].values[2].key+" : "+nest[0].values[2].value.count)						
+if (nest[0].values[2].key=undefined)nest[0].values[2].key="undefined";
+	
+console.log(nest[0].key+" : "+nest[0].values[2].key)						
 //nest.forEach(function(item) {
 
 	//console.log(item.key+" : "+item.values[1].key+" : "+item.values[1].value.count)
