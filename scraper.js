@@ -80,7 +80,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 //exporter.json('SELECT * FROM data', function (err, json) {
 						//console.log(json)
 						
-						
+						/*
 						var nest=d3.nest()
   						  .key(function(d) {return d.name;})
 						  .key(function(d) {return d.procurementMethod;})
@@ -90,7 +90,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 							total: d3.sum(v, function(d) { return d.amount; })
   						   }; })
   						  .entries(JSON.parse(json));
-						
+						*/
 						
 //nest.forEach(function(item) {
 
