@@ -55,7 +55,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<2){piv ();}		
+		if (p<1){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -84,21 +84,16 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
   						  .entries(JSON.parse(json));
 						
 						
-						//dataset.forEach(function(item) {
-							
-						//})
+nest.forEach(function(item) {
 						
 try {
-console.log(nest[0].key+" : "+nest[0].values[0].key+" : "+nest[0].values[0].value.count+" : "+nest[0].values[1].key+" : "+nest[0].values[1].value.count)
-console.log(nest[1].key+" : "+nest[1].values[0].key+" : "+nest[1].values[0].value.count+" : "+nest[1].values[1].key+" : "+nest[1].values[1].value.count)
-
-
+console.log(item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count)
 } catch (err) {
 
 console.log("oops!")
+}							
+})						
 
-
-}
 						
 
 						
