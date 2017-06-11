@@ -2,6 +2,7 @@ var client = require('http-api-client');
 var sqlite3 = require("sqlite3").verbose();
 const sqliteJSON = require('sqlite-json');
 var d3 = require("d3");
+const fs = require('fs');
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
 
@@ -55,7 +56,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<1){piv ();}		
+		if (p<10){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -63,7 +64,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 1) {
+				if (p2 < 5) {
 					piv ();
 				}
 				else {
@@ -87,7 +88,9 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 nest.forEach(function(item) {
 						
 try {
-console.log(item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count)
+var res = item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count;
+fs.appendFile("test.json", res);
+console.log(res)
 } catch (err) {
 
 console.log("oops!")
