@@ -89,10 +89,10 @@ exporter.json('SELECT * FROM data', function (err, json) {
   						   }; })
   						  .entries(JSON.parse(json));
 						
-						
-nest.forEach(function(item) {
+console.log(nest[0].key+" : "+nest[0].values[1].key+" : "+nest[0].values[1].value.count)						
+//nest.forEach(function(item) {
 
-	console.log(item.key+" : "+item.values[1].key+" : "+item.values[1].value.count)
+	//console.log(item.key+" : "+item.values[1].key+" : "+item.values[1].value.count)
 	
 	/*
 	db.serialize(function() {
@@ -102,7 +102,7 @@ nest.forEach(function(item) {
 		statement.finalize();
 	});
 	*/
-})						
+//})						
 
 						
 
