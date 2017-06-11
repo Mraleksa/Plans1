@@ -56,7 +56,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<4){piv ();}		
+		if (p<1){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -76,9 +76,11 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 const exporter = sqliteJSON(db);
 					
 exporter.json('SELECT * FROM data', function (err, json) {
-						//console.log(json)
-						
-						
+						console.log(json)
+						var json2 = json.replace("limited", "open")
+						console.log(json2)
+	
+	/*
 						var nest=d3.nest()
   						  .key(function(d) {return d.name;})
 						  .key(function(d) {return d.procurementMethod;})
@@ -117,7 +119,7 @@ statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values
 })						
 
 						
-
+*/
 						
 						
 });		
