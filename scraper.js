@@ -6,9 +6,7 @@ const SqliteToJson = require('sqlite-to-json');
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
 
-const exporter = new SqliteToJson({
-  client: new sqlite3.Database("data.sqlite");
-});
+
 
 console.log(SqliteToJson)
 	
@@ -73,6 +71,10 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 					piv ();
 				}
 				else {
+					const exporter = new SqliteToJson({
+ 						 client: new sqlite3.Database("data.sqlite");
+					});
+					
 					exporter.all(function (err, all) {
  						 console.log(all)
 					});
