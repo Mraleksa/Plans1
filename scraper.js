@@ -68,7 +68,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				}
 				else {
 					console.log("STOP");
-					//db.run("DELETE FROM data");
+					db.run("DELETE FROM data");
 				     }
 				}, 5000);
 		}		
