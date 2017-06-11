@@ -1,6 +1,6 @@
 var client = require('http-api-client');
 var sqlite3 = require("sqlite3").verbose();
-
+const sqliteJSON = require('sqlite-json');
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
 
@@ -66,7 +66,9 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 					piv ();
 				}
 				else {
-					exporter.json('select * FROM myTable', function (err, json) {
+					
+					const exporter = sqliteJSON(db);
+					exporter.json('SELECT * FROM data', function (err, json) {
 						console.log(json)
 					});		
 					///////////////////////////////
