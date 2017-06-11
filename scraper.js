@@ -76,6 +76,14 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
       						console.log(row.id + ": " + row.nameId);
 						
 						//db.run("DELETE FROM data");
+						   var nest=d3.nest()
+  						  .key(function(d) {return d.date;})
+  						  .key(function(d) {return d.final_;})
+  						  .sortKeys(d3.ascending)
+  						  .rollup(function(v) { return {
+    							count: v.length,
+  						   }; })
+  						  .entries(dataset);
 						
 						db.serialize(function() {
 
