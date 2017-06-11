@@ -1,14 +1,9 @@
 var client = require('http-api-client');
 var sqlite3 = require("sqlite3").verbose();
-const SqliteToJson = require('sqlite-to-json');
-
 
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
 
-
-
-console.log(SqliteToJson)
 	
 var currentCount =  "2017-04-20T12:38:09.008329+03:00"
 var p=0; var p2=0;
@@ -71,13 +66,9 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 					piv ();
 				}
 				else {
-					const exporter = new SqliteToJson({
- 						 client: new sqlite3.Database("data.sqlite");
-					});
-					
-					exporter.all(function (err, all) {
- 						 console.log(all)
-					});
+					exporter.json('select * FROM myTable', function (err, json) {
+						console.log(json)
+					});		
 					///////////////////////////////
 					//var db2 = new sqlite3.Database("data2.sqlite");
 					
