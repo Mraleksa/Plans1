@@ -66,7 +66,10 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				if (p2 < 2) {
 					piv ();
 				}
-				else {console.log("STOP")}
+				else {
+					console.log("STOP");
+					db.run("DELETE FROM data");
+				     }
 				}, 5000);
 		}		
 							
@@ -83,6 +86,5 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 
 piv ();	
  
-console.log("hi!")
    
-//db.run("DELETE FROM data");
+
