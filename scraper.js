@@ -76,11 +76,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 const exporter = sqliteJSON(db);
 					
 exporter.json('SELECT * FROM data', function (err, json) {
-						console.log(json)
-						var json2 = json.replace(/limited/g, "open")
-						console.log(json2)
-	
-	/*
+						
 						var nest=d3.nest()
   						  .key(function(d) {return d.name;})
 						  .key(function(d) {return d.procurementMethod;})
@@ -89,7 +85,7 @@ exporter.json('SELECT * FROM data', function (err, json) {
     							 count: v.length, 
 							total: d3.sum(v, function(d) { return d.amount; })
   						   }; })
-  						  .entries(JSON.parse(json));
+  						  .entries(JSON.parse(json.replace(/limited/g, "open")));
 						
 
 
@@ -101,11 +97,11 @@ nest.forEach(function(item) {
 	
 	
 	db.serialize(function() {
-		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,keyNo TEXT,countNo INT,keyLimited TEXT,countLimited INT,keyOpen TEXT,countOpen INT)");
-		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?,?,?,?,?)");
+		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,keyNo TEXT,countNo INT,keyOpen TEXT,countOpen INT)");
+		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?,?,?)");
 try {
 
-statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count,item.values[2].key,item.values[2].value.count); 
+statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count); 
 			
 
 } catch (err) {
@@ -119,7 +115,7 @@ statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values
 })						
 
 						
-*/
+
 						
 						
 });		
