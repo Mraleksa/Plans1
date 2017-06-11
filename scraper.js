@@ -1,11 +1,12 @@
 var client = require('http-api-client');
 var sqlite3 = require("sqlite3").verbose();
+const SqliteToJson = require('sqlite-to-json');
 
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
 
 
-
+console.log(SqliteToJson)
 	
 var currentCount =  "2017-04-20T12:38:09.008329+03:00"
 var p=0; var p2=0;
@@ -72,6 +73,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 					///////////////////////////////
 					//var db2 = new sqlite3.Database("data2.sqlite");
 					
+					/*
 					db.each("SELECT rowid AS id, nameId FROM data", function(err, row) {
       						console.log(row.id + ": " + row.nameId);
 						
@@ -100,7 +102,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 
 							  
   					});
-					
+					*/
 					///////////////////////////////
 					console.log("STOP");
 				     }
