@@ -70,7 +70,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				else {
 					
 ///////////////////////////////		
- db.run("SELECT * FROM data", function(err, row) {
+ db.each("SELECT * FROM data", function(err, row) {
       console.log(row);
   });
 					
