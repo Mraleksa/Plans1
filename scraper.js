@@ -55,7 +55,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<3){piv ();}		
+		if (p<2){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -70,8 +70,10 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 					
 					const exporter = sqliteJSON(db);
 					exporter.json('SELECT * FROM data', function (err, json) {
-						//console.log(json)
-						 var nest=d3.nest()
+						console.log(json)
+						
+						/*
+						var nest=d3.nest()
   						  .key(function(d) {return d.name;})
   						  .sortKeys(d3.ascending)
   						  .rollup(function(v) { return {
@@ -80,7 +82,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
   						  .entries(json);
 						
 						console.log(nest)
-						
+						*/
 					});		
 					///////////////////////////////
 					//var db2 = new sqlite3.Database("data2.sqlite");
