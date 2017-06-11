@@ -70,20 +70,22 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				else {
 					
 					///////////////////////////////
-					var db2 = new sqlite3.Database("data2.sqlite");
+					//var db2 = new sqlite3.Database("data2.sqlite");
 					
 					db.each("SELECT rowid AS id, nameId FROM data", function(err, row) {
       						console.log(row.id + ": " + row.nameId);
-							
-						db2.serialize(function() {
+						
+						//db.run("DELETE FROM data");
+						
+						db.serialize(function() {
 
-							db2.run("CREATE TABLE IF NOT EXISTS data2 (id TEXT,nameId TEXT)");
+							db.run("CREATE TABLE IF NOT EXISTS data2 (id TEXT,nameId TEXT)");
 
-							var statement2 = db2.prepare("INSERT INTO data2 VALUES (?,?)");
+							var statement = db.prepare("INSERT INTO data2 VALUES (?,?)");
 
-							statement2.run(row.id,row.nameId);
+							statement.run(row.id,row.nameId);
   
-							statement2.finalize();
+							statement.finalize();
 						});
 
 
