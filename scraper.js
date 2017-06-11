@@ -56,7 +56,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<10){piv ();}		
+		if (p<5){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -64,7 +64,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 30) {
+				if (p2 < 1) {
 					piv ();
 				}
 				else {
@@ -89,17 +89,19 @@ exporter.json('SELECT * FROM data', function (err, json) {
 						
 						
 nest.forEach(function(item) {
-console.log(item.values[0].key+" : "+item.values[0].value.count);
-	    
-//var res = item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count;
 
+	    
+var res = item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count+" : "+item.values[2].key+" : "+item.values[2].value.count;
+JSON.stringify(res);
+console.log(res);	
+	/*
 	db.serialize(function() {
 		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,keyNo TEXT,countNo INT,keyLimited TEXT,countLimited INT,keyOpen TEXT,countOpen INT)");
 		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?,?,?,?,?)");
 		statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count,item.values[2].key,item.values[2].value.count); 
 		statement.finalize();
 	});
-	
+	*/
 })						
 
 						
