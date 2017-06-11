@@ -99,16 +99,16 @@ nest.forEach(function(item) {
 	db.serialize(function() {
 		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,keyNo TEXT,countNo INT,keyOpen TEXT,countOpen INT)");
 		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?,?,?)");
-try {
 
-statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count); 
-			
 
-} catch (err) {
-
-statement.run(item.key,item.values[0].key,item.values[0].value.count,"no key","no data"); 	
-
+if(item.values[0].key==""){
+statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count); 	
 }
+if(item.values[0].key=="open"){
+statement.run(item.key,"no key","no data",item.values[0].key,item.values[0].value.count); 	
+}		
+		
+	
 		statement.finalize();
 	});
 	
