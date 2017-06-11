@@ -90,33 +90,31 @@ exporter.json('SELECT * FROM data', function (err, json) {
   						  .entries(JSON.parse(json));
 						
 
-for (var i = 0; i < 3; i++) {
- try {
 
-console.log(nest[0].key+" : "+nest[0].values[i].key)	
-
-} catch (err) {
-
- console.log("no")	
-
-}
-	
-}
 	
 					
-//nest.forEach(function(item) {
+nest.forEach(function(item) {
 
 	//console.log(item.key+" : "+item.values[1].key+" : "+item.values[1].value.count)
 	
-	/*
+	
 	db.serialize(function() {
 		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,keyNo TEXT,countNo INT,keyLimited TEXT,countLimited INT,keyOpen TEXT,countOpen INT)");
 		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?,?,?,?,?)");
-		statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count,item.values[2].key,item.values[2].value.count); 
+		 try {
+
+statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count,item.values[2].key,item.values[2].value.count); 
+			
+
+} catch (err) {
+
+ console.log("err!")	
+
+}
 		statement.finalize();
 	});
-	*/
-//})						
+	
+})						
 
 						
 
