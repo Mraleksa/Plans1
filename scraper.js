@@ -83,5 +83,6 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 
 piv ();	
  
+console.log("hi!")
    
-//node_modules\http-api-client
+//db.run("DELETE FROM data");
