@@ -28,18 +28,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offse
 			dataset.forEach(function(item) {
 				client.request({url: 'https://public.api.openprocurement.org/api/0/plans/'+item.id})
 					.then(function (data) {
-/*
-var res = '{
-"id":"'+data.getJSON().data.id+'",
-"datePublished":"'+data.getJSON().data.datePublished+'",
-"cpv":"'+data.getJSON().data.classification.id+'",
-"name":"'+data.getJSON().data.procuringEntity.identifier.id+'", 
-"amount":'+data.getJSON().data.budget.amount+', 
-"currency":"'+data.getJSON().data.budget.currency+'", 
-"procurementMethod":"'+data.getJSON().data.tender.procurementMethod+'",
-"procurementMethodType":"'+data.getJSON().data.tender.procurementMethodType+'",
-"startDate":"'+data.getJSON().data.tender.tenderPeriod.startDate+'"},'
-*/					
+			
 				
 					
 db.serialize(function() {
@@ -49,9 +38,9 @@ db.serialize(function() {
 
   
   // Insert a new record
-  var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?)");
+  var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?)");
 
-statement.run(data.getJSON().data.id,+data.getJSON().data.datePublished,+data.getJSON().data.classification.id,data.getJSON().data.procuringEntity.identifier.id,data.getJSON().data.procuringEntity.identifier.name,data.getJSON().data.budget.amount,data.getJSON().data.budget.currency,data.getJSON().data.tender.procurementMethod,data.getJSON().data.tender.procurementMethodType,data.getJSON().data.tender.tenderPeriod.startDate);
+statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJSON().data.classification.id,data.getJSON().data.procuringEntity.identifier.id,data.getJSON().data.procuringEntity.identifier.name,data.getJSON().data.budget.amount,data.getJSON().data.budget.currency,data.getJSON().data.tender.procurementMethod,data.getJSON().data.tender.procurementMethodType,data.getJSON().data.tender.tenderPeriod.startDate);
   //else none;
    //console.log(item.dateModified)
   statement.finalize();
