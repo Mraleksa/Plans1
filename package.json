@@ -4,6 +4,7 @@
   "dependencies": {
     "d3": "latest",
     "sqlite3": "latest",
+    "sqlite-to-json": "latest",
     "http-api-client": "latest"
   },
   "keywords": [
