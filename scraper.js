@@ -77,7 +77,7 @@ const exporter = sqliteJSON(db);
 					
 exporter.json('SELECT * FROM data', function (err, json) {
 						console.log(json)
-						var json2 = json.replace("limited", "open")
+						var json2 = json.replace(/limited/g, "open")
 						console.log(json2)
 	
 	/*
