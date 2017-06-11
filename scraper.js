@@ -56,7 +56,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<10){piv ();}		
+		if (p<2){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -64,16 +64,20 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 3) {
+				if (p2 < 1) {
 					piv ();
 				}
 				else {
 					
 ///////////////////////////////		
+ db.run("SELECT * FROM data", function(err, row) {
+      console.log(row);
+  });
 					
-const exporter = sqliteJSON(db);
+						
+//const exporter = sqliteJSON(db);
 					
-exporter.json('SELECT * FROM data', function (err, json) {
+//exporter.json('SELECT * FROM data', function (err, json) {
 						//console.log(json)
 						
 						
@@ -88,19 +92,8 @@ exporter.json('SELECT * FROM data', function (err, json) {
   						  .entries(JSON.parse(json));
 						
 						
-nest.forEach(function(item) {
+//nest.forEach(function(item) {
 
-	    
-//var res = item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count+" : "+item.values[2].key+" : "+item.values[2].value.count;
-
-//console.log(JSON.stringify(item));
-	
-	db.serialize(function() {
-		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT)");
-		var statement = db.prepare("INSERT INTO data2 VALUES (?)");
-		statement.run(JSON.stringify(item)); 
-		statement.finalize();
-	});
 	
 	/*
 	db.serialize(function() {
@@ -110,13 +103,13 @@ nest.forEach(function(item) {
 		statement.finalize();
 	});
 	*/
-})						
+//})						
 
 						
 
 						
 						
-});		
+//});		
 
 ///////////////////////////////
 					console.log("STOP");
