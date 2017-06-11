@@ -83,10 +83,12 @@ exporter.json('SELECT * FROM data', function (err, json) {
   						  .key(function(d) {return d.name;})
 						 // .key(function(d) {return d.procurementMethod;})
   						  .sortKeys(d3.ascending)
-  						 // .rollup(function(v) { return {
-    						//	count: v.length,
-						//	total: d3.sum(v, function(d) { return d.amount; })
-  						 //  }; })
+  						  .rollup(function(v) { return {
+    							amount: v.amount,
+							procurementMethod: v.procurementMethod,  
+							// count: v.length, 
+							//total: d3.sum(v, function(d) { return d.amount; })
+  						   }; })
   						  .entries(JSON.parse(json));
 						
 						
