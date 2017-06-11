@@ -92,7 +92,7 @@ exporter.json('SELECT * FROM data', function (err, json) {
 						
 nest.forEach(function(item) {
 
-	console.log(JSON.parse(item))
+	console.log(JSON.stringify(item))
 	
 	/*
 	db.serialize(function() {
