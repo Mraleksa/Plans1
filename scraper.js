@@ -45,13 +45,13 @@ var res = '{
 db.serialize(function() {
 
   // Create new table
-  db.run("CREATE TABLE IF NOT EXISTS data (id TEXT,datePublished TEXT,cpv TEXT,amount INT)");
+  db.run("CREATE TABLE IF NOT EXISTS data (id TEXT,datePublished TEXT,cpv TEXT,nameId TEXT,name TEXT,amount INT,currency TEXT,procurementMethod TEXT,procurementMethodType TEXT,startDate TEXT)");
 
   
   // Insert a new record
-  var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?)");
+  var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?)");
 
-statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJSON().data.classification.id,data.getJSON().data.budget.amount);
+statement.run(data.getJSON().data.id,+data.getJSON().data.datePublished,+data.getJSON().data.classification.id,data.getJSON().data.procuringEntity.identifier.id,data.getJSON().data.procuringEntity.identifier.name,data.getJSON().data.budget.amount,data.getJSON().data.budget.currency,data.getJSON().data.tender.procurementMethod,data.getJSON().data.tender.procurementMethodType,data.getJSON().data.tender.tenderPeriod.startDate);
   //else none;
    //console.log(item.dateModified)
   statement.finalize();
