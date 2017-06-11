@@ -69,7 +69,17 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 					
 					const exporter = sqliteJSON(db);
 					exporter.json('SELECT * FROM data', function (err, json) {
-						console.log(json)
+						//console.log(json)
+						 var nest=d3.nest()
+  						  .key(function(d) {return d.name;})
+  						  .sortKeys(d3.ascending)
+  						  .rollup(function(v) { return {
+    							count: v.length,
+  						   }; })
+  						  .entries(json);
+						
+						console.log(nest)
+						
 					});		
 					///////////////////////////////
 					//var db2 = new sqlite3.Database("data2.sqlite");
