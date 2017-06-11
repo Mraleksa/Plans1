@@ -106,7 +106,7 @@ statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values
 
 } catch (err) {
 
- console.log("err!")	
+statement.run(item.key,item.values[0].key,item.values[0].value.count); 	
 
 }
 		statement.finalize();
