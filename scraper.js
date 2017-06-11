@@ -79,9 +79,9 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
   						  .rollup(function(v) { return {
     							count: v.length,
   						   }; })
-  						  .entries(json);
+  						  .entries(JSON.parse(json));
 						
-						console.log(JSON.parse(nest))
+						console.log(nest)
 						
 					});		
 					///////////////////////////////
