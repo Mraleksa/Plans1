@@ -86,10 +86,17 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 						
 						
 nest.forEach(function(item) {
-console.log(+item.values[1].key+" : "+item.values[1].value.count);
+console.log(item.values[1].key+" : "+item.values[1].value.count);
 	    
 //var res = item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count;
-							
+/*
+	db.serialize(function() {
+		db.run("CREATE TABLE IF NOT EXISTS data2 (id TEXT,nameId TEXT)");
+		var statement = db.prepare("INSERT INTO data2 VALUES (?,?)");
+		statement.run(row.id,row.nameId); 
+		statement.finalize();
+	});
+*/	
 })						
 
 						
