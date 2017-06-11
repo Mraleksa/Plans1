@@ -56,7 +56,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<3){piv ();}		
+		if (p<10){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -64,13 +64,16 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 2) {
+				if (p2 < 30) {
 					piv ();
 				}
 				else {
 					
-					const exporter = sqliteJSON(db);
-					exporter.json('SELECT * FROM data', function (err, json) {
+///////////////////////////////		
+					
+const exporter = sqliteJSON(db);
+					
+exporter.json('SELECT * FROM data', function (err, json) {
 						//console.log(json)
 						
 						
@@ -91,9 +94,9 @@ console.log(item.values[0].key+" : "+item.values[0].value.count);
 //var res = item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count;
 
 	db.serialize(function() {
-		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,key TEXT,count INT)");
-		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?)");
-		statement.run(item.key,item.values[0].key,item.values[0].value.count); 
+		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,keyNo TEXT,countNo INT,keyLimited TEXT,countLimited INT,keyOpen TEXT,countOpen INT)");
+		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?,?,?,?,?)");
+		statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count,item.values[2].key,item.values[2].value.count); 
 		statement.finalize();
 	});
 	
@@ -103,41 +106,9 @@ console.log(item.values[0].key+" : "+item.values[0].value.count);
 
 						
 						
-					});		
-					///////////////////////////////
-					//var db2 = new sqlite3.Database("data2.sqlite");
-					
-					/*
-					db.each("SELECT rowid AS id, nameId FROM data", function(err, row) {
-      						console.log(row.id + ": " + row.nameId);
-						
-						//db.run("DELETE FROM data");
-						   var nest=d3.nest()
-  						  .key(function(d) {return d.date;})
-  						  .key(function(d) {return d.final_;})
-  						  .sortKeys(d3.ascending)
-  						  .rollup(function(v) { return {
-    							count: v.length,
-  						   }; })
-  						  .entries(dataset);
-						
-						db.serialize(function() {
+});		
 
-							db.run("CREATE TABLE IF NOT EXISTS data2 (id TEXT,nameId TEXT)");
-
-							var statement = db.prepare("INSERT INTO data2 VALUES (?,?)");
-
-							statement.run(row.id,row.nameId);
-  
-							statement.finalize();
-						});
-
-
-
-							  
-  					});
-					*/
-					///////////////////////////////
+///////////////////////////////
 					console.log("STOP");
 				     }
 				}, 5000);
