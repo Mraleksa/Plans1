@@ -68,7 +68,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 					piv ();
 				}
 				else {
-					console.log("STOP");
+					
 					///////////////////////////////
 					var db2 = new sqlite3.Database("data2.sqlite");
 					
@@ -92,6 +92,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
   					});
 					
 					///////////////////////////////
+					console.log("STOP");
 				     }
 				}, 5000);
 		}		
