@@ -2,7 +2,7 @@ var client = require('http-api-client');
 var sqlite3 = require("sqlite3").verbose();
 const sqliteJSON = require('sqlite-json');
 var d3 = require("d3");
-const fs = require('fs');
+
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
 
@@ -86,15 +86,10 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 						
 						
 nest.forEach(function(item) {
-						
-try {
-var res = item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count;
-fs.appendFile("test.json", res);
-console.log(res)
-} catch (err) {
-
-console.log("oops!")
-}							
+console.log(+item.values[0].key+" : "+item.values[0].value.count+);
+	    
+//var res = item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count;
+							
 })						
 
 						
