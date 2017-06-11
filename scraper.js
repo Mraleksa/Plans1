@@ -56,7 +56,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<10){piv ();}		
+		if (p<3){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -86,7 +86,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 						
 						
 nest.forEach(function(item) {
-console.log(+item.values[0].key+" : "+item.values[0].value.count);
+console.log(+item.values[1].key+" : "+item.values[1].value.count);
 	    
 //var res = item.key+" : "+item.values[0].key+" : "+item.values[0].value.count+" : "+item.values[1].key+" : "+item.values[1].value.count;
 							
