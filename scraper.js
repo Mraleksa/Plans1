@@ -64,7 +64,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 20) {
+				if (p2 < 3) {
 					piv ();
 				}
 				else {
@@ -101,11 +101,14 @@ nest.forEach(function(item) {
 		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?,?,?)");
 
 
-if(item.values.length==1){
-statement.run(item.key,item.values[0].key,item.values[0].value.count,"no key","no data"); 	
+if(item.values[0].key==""){
+statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count); 
+	
 }
-if(item.values.length==2){
-statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count); 			
+if(item.values[0].key=="open"){
+	
+statement.run(item.key,"no key","no data",item.values[0].key,item.values[0].value.count); 	
+
 }		
 
 		
