@@ -93,23 +93,23 @@ exporter.json('SELECT * FROM data', function (err, json) {
 					
 nest.forEach(function(item) {
 
-	//console.log(item.key+" : "+item.values[1].key+" : "+item.values[1].value.count)
+console.log(item.key+" : "+item.values.length)
 	
 	
 	db.serialize(function() {
 		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,keyNo TEXT,countNo INT,keyOpen TEXT,countOpen INT)");
 		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?,?,?)");
 
-
+/*
 if(item.values[0].key==""){
-//statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count); 	
+statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count); 	
 	console.log("no")
 }
 if(item.values[0].key=="open"){
-//statement.run(item.key,"no key","no data",item.values[0].key,item.values[0].value.count); 
+statement.run(item.key,"no key","no data",item.values[0].key,item.values[0].value.count); 
 	console.log("open")
 }		
-		
+*/		
 	
 		statement.finalize();
 	});
