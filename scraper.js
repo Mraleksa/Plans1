@@ -105,8 +105,13 @@ if(item.values.length==2){
 	statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count); 
 	console.log(2)
 }
-else {
-	console.log(1)
+else {	
+	if(item.values[0].key==""){
+		console.log("nathing")
+	}
+	if(item.values[0].key=="open"){
+		console.log("open")
+	}
 }
 		
 	
