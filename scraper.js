@@ -85,7 +85,7 @@ exporter.json('SELECT * FROM data', function (err, json) {
     							 count: v.length, 
 							total: d3.sum(v, function(d) { return d.amount; })
   						   }; })
-  						  .entries(JSON.parse(json.replace(/limited/g, "open")));
+  						  .entries(JSON.parse(json));
 						
 
 
@@ -97,17 +97,19 @@ nest.forEach(function(item) {
 	
 	
 	db.serialize(function() {
-		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,keyNo TEXT,countNo INT,keyOpen TEXT,countOpen INT)");
-		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?,?,?)");
+		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,keyNo TEXT,countNo INT,keyLim TEXT,countLim INT,keyOpen TEXT,countOpen INT)");
+		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?,?,?,?,?)");
 
 
 if(item.values.length==1){
-statement.run(item.key,"no key","no data",item.values[0].key,item.values[0].value.count); 	
+statement.run(item.key,item.values[0].key,item.values[0].value.count,"no key","no data","no key","no data"); 	
 }
 if(item.values.length==2){
-statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count); 			
+statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count,"no key","no data",); 			
 }		
-
+if(item.values.length==3){
+statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count,item.values[2].key,item.values[2].value.count); 			
+}	
 		
 	
 		statement.finalize();
