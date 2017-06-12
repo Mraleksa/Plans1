@@ -103,15 +103,15 @@ nest.forEach(function(item) {
 
 if(item.values.length==2){
 	statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count); 
-	console.log(2)
+	//console.log(2)
 }
 else {	
 	if(item.values[0].key==""){
-		console.log("nathing")
+		//console.log("nathing")
 		statement.run(item.key,item.values[0].key,item.values[0].value.count,"no key","no data");
 	}
 	if(item.values[0].key=="open"){
-		console.log("open")
+		//console.log("open")
 		statement.run(item.key,"no key","no data",item.values[0].key,item.values[0].value.count);
 	}
 }
