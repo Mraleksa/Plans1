@@ -105,7 +105,7 @@ if(item.values.length==1){
 statement.run(item.key,item.values[0].key,item.values[0].value.count,"no key","no data","no key","no data"); 	
 }
 if(item.values.length==2){
-statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count,"no key","no data",); 			
+statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count,"no key","no data"); 			
 }		
 if(item.values.length==3){
 statement.run(item.key,item.values[0].key,item.values[0].value.count,item.values[1].key,item.values[1].value.count,item.values[2].key,item.values[2].value.count); 			
