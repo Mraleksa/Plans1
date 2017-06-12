@@ -108,9 +108,11 @@ if(item.values.length==2){
 else {	
 	if(item.values[0].key==""){
 		console.log("nathing")
+		statement.run(item.key,item.values[0].key,item.values[0].value.count,"no key","no data");
 	}
 	if(item.values[0].key=="open"){
 		console.log("open")
+		statement.run(item.key,"no key","no data",item.values[0].key,item.values[0].value.count);
 	}
 }
 		
