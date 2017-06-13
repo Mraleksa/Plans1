@@ -8,8 +8,8 @@ var db = new sqlite3.Database("data.sqlite");
 
 db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, row) {
       console.log(row); 
-  });
-console.log(row); 
+
+
 
 var currentCount =  "2017-02-01T00:00:00.008329+03:00"
 var p=0; var p2=0;
@@ -157,4 +157,4 @@ piv ();
  
    
 
-
+  });
