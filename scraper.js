@@ -5,26 +5,22 @@ var d3 = require("d3");
 
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
-
-db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, row) {
-      console.log(row); 
-
-
-
-var currentCount =  "2017-02-01T00:00:00.008329+03:00"
 var p=0; var p2=0;
-   
+
+db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, start) {
+      console.log(start); 
+
    
 function piv(){  
 p++;
-client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offset='+currentCount})
+client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offset='+start})
 		.then(function (data) {
 						 
 		
 			var dataset = data.getJSON().data;
 			
-			currentCount = data.getJSON().next_page.offset;			
-			console.log(currentCount)
+			start = data.getJSON().next_page.offset;			
+			console.log(start)
 			
 			return dataset;
 	
