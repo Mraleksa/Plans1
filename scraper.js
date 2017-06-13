@@ -7,7 +7,7 @@ var d3 = require("d3");
 var db = new sqlite3.Database("data.sqlite");
 
 	
-var currentCount =  "2017-02-21T00:00:00.008329+03:00"
+var currentCount =  "2017-01-21T00:00:00.008329+03:00"
 var p=0; var p2=0;
    
    
