@@ -7,7 +7,7 @@ var d3 = require("d3");
 var db = new sqlite3.Database("data.sqlite");
 
 	
-var currentCount =  "2017-01-01T00:00:00.008329+03:00"
+var currentCount =  "2017-01-21T00:00:00.008329+03:00"
 var p=0; var p2=0;
    
    
@@ -72,7 +72,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 					
 ///////////////////////////////		
 
-//db.run("DELETE FROM data2");					
+db.run("DELETE FROM data2");					
 						
 const exporter = sqliteJSON(db);
 					
