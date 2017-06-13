@@ -76,7 +76,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,da
 						
 const exporter = sqliteJSON(db);
 					
-exporter.json('SELECT * FROM data', function (err, json) {
+exporter.json('SELECT name,procurementMethod FROM data', function (err, json) {
 						
 						var nest=d3.nest()
   						  .key(function(d) {return d.name;})
