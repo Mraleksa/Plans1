@@ -7,7 +7,7 @@ var d3 = require("d3");
 var db = new sqlite3.Database("data.sqlite");
 
 	
-var currentCount =  "2017-04-20T12:38:09.008329+03:00"
+var currentCount =  "2017-01-01T00:00:00.008329+03:00"
 var p=0; var p2=0;
    
    
@@ -23,6 +23,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offse
 			console.log(currentCount)
 			
 			return dataset;
+	
 		})	
 		.then(function (dataset) {	
 		
@@ -56,7 +57,7 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 		
 		})
 		.then(function () {	
-		if (p<10){piv ();}		
+		if (p<100){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
