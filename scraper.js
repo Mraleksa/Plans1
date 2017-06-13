@@ -72,7 +72,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,da
 					
 ///////////////////////////////		
 db.run("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, row) {
-      console.log(row); console.log(row.dateModified);
+      console.log(row); 
   });
 					
 //db.run("DELETE FROM data2");					
