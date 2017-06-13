@@ -71,7 +71,10 @@ statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,da
 				else {
 					
 ///////////////////////////////		
-
+db.run("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, row) {
+      console.log(row); console.log(row.dateModified);
+  });
+					
 //db.run("DELETE FROM data2");					
 						
 const exporter = sqliteJSON(db);
