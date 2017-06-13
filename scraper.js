@@ -7,10 +7,10 @@ var d3 = require("d3");
 var db = new sqlite3.Database("data.sqlite");
 var p=0; var p2=0;
 
-db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, start) {
-      console.log(start); 
+//db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, start) {
+    //  console.log(start); 
 
-   
+var start = "2017-03-25T00:00:00.008329+03:00"   
 function piv(){  
 p++;
 client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offset='+start})
@@ -153,4 +153,4 @@ piv ();
  
    
 
-  });
+ // });
