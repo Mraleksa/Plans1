@@ -71,7 +71,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,da
 				else {
 					
 ///////////////////////////////		
-db.run("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, row) {
+db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, row) {
       console.log(row); 
   });
 					
