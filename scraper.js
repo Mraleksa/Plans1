@@ -65,14 +65,14 @@ statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJ
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 50) {
+				if (p2 < 20) {
 					piv ();
 				}
 				else {
 					
 ///////////////////////////////		
 
-					
+db.run("DELETE FROM data2");					
 						
 const exporter = sqliteJSON(db);
 					
