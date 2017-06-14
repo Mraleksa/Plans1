@@ -109,7 +109,6 @@ exporter.json('SELECT name,procurementMethod FROM data', function (err, json) {
 					
 nest.forEach(function(item) {
 
-console.log(item.values.length)
 console.log(item.values[0].value.total)
 	
 	
