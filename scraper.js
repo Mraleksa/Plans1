@@ -14,9 +14,7 @@ var p=0; var p2=0;
 db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, timeStart) {
       console.log(timeStart.dateModified); 
 	var currentCount = timeStart.dateModified
-piv ();	
- 
- });
+
 
 
 function piv(){  
@@ -155,4 +153,6 @@ else {
 
 }
 
-
+piv ();	
+ 
+ });
