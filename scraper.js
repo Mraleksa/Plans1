@@ -21,7 +21,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offse
 		
 			var dataset = data.getJSON().data;
 			
-			start = data.getJSON().next_page.offset;			
+			currentCount = data.getJSON().next_page.offset;			
 			console.log(currentCount)
 			
 			return dataset;
