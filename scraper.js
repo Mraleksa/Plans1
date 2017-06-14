@@ -18,7 +18,7 @@ var currentCount =  "2017-01-01T00:00:00.008329+03:00"
 	//var end  = formatTime(new Date());
 	//console.log("конец: "+end);
 
-db.run("DELETE FROM data");
+//db.run("DELETE FROM data");
 	
 function piv(){  
 p++;
@@ -113,8 +113,8 @@ nest.forEach(function(item) {
 	
 	
 	db.serialize(function() {
-		db.run("CREATE TABLE IF NOT EXISTS data4 (item TEXT,keyNo TEXT,countNo INT,keyOpen TEXT,countOpen INT)");
-		var statement = db.prepare("INSERT INTO data4 VALUES (?,?,?,?,?)");
+		db.run("CREATE TABLE IF NOT EXISTS data1 (item TEXT,keyNo TEXT,countNo INT,keyOpen TEXT,countOpen INT)");
+		var statement = db.prepare("INSERT INTO data1 VALUES (?,?,?,?,?)");
 
 
 if(item.values.length==2){
