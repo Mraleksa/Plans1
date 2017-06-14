@@ -48,13 +48,13 @@ if(data.getJSON().data.budget.year =="2017"){
 db.serialize(function() {
 
   // Create new table
-  db.run("CREATE TABLE IF NOT EXISTS data (id TEXT,dateModified TEXT,nameId TEXT,name TEXT,amount INT,currency TEXT,procurementMethod TEXT,datePublished TEXT)");
+  db.run("CREATE TABLE IF NOT EXISTS data (id TEXT,dateModified TEXT,name TEXT,amount INT,procurementMethod TEXT)");
 
   
   // Insert a new record
-  var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?)");
+  var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?)");
 
-statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.identifier.id,data.getJSON().data.procuringEntity.name,data.getJSON().data.budget.amount,data.getJSON().data.budget.currency,data.getJSON().data.tender.procurementMethod,data.getJSON().data.datePublished);
+statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.name,data.getJSON().data.budget.amount,data.getJSON().data.tender.procurementMethod);
   //else none;
    //console.log(item.dateModified)
   statement.finalize();
