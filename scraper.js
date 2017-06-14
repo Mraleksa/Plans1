@@ -33,7 +33,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offse
 				client.request({url: 'https://public.api.openprocurement.org/api/0/plans/'+item.id})
 					.then(function (data) {
 			
-				
+			 	
 					
 db.serialize(function() {
 
