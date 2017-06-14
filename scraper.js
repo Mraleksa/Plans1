@@ -38,7 +38,10 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offse
 					.then(function (data) {
 			
 			 	
-					
+var year = data.getJSON().data.datePublished;
+if(year.replace(/-.*/, "") =="2017"){
+	
+	
 db.serialize(function() {
 
   // Create new table
@@ -54,7 +57,9 @@ statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,da
   statement.finalize();
 });
 
-					})
+}//year
+				
+				})
 					.catch(function  (error) {
 						console.log("error_detale")
 						
