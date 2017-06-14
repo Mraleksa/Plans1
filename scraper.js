@@ -39,8 +39,8 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offse
 					.then(function (data) {
 			
 
-console.log(data.getJSON().data.budget.year)
-//if(data.getJSON().data.budget[0].year =="2017"){
+
+if(data.getJSON().data.budget.year =="2017"){
 	
 	
 db.serialize(function() {
@@ -58,7 +58,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.iden
   statement.finalize();
 });
 
-//}//year
+}//year
 				
 				})
 					.catch(function  (error) {
