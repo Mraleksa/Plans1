@@ -10,7 +10,7 @@ var p=0; var p2=0;
 //db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, start) {
     //  console.log(start); 
 
-var currentCount =  "2017-03-25T00:00:00.008329+03:00"
+var currentCount =  "2017-01-01T00:00:00.008329+03:00"
 
 
 function piv(){  
@@ -59,7 +59,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,da
 		
 		})
 		.then(function () {	
-		if (p<10){piv ();}		
+		if (p<5){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -67,7 +67,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,da
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 3) {
+				if (p2 < 1) {
 					piv ();
 				}
 				else {
