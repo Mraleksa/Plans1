@@ -71,7 +71,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.name
 		
 		})
 		.then(function () {	
-		if (p<10){piv ();}		
+		if (p<5){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -79,7 +79,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.name
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 3) {
+				if (p2 < 1) {
 					piv ();
 				}
 				else {
@@ -109,7 +109,8 @@ exporter.json('SELECT name,procurementMethod FROM data', function (err, json) {
 					
 nest.forEach(function(item) {
 
-//console.log(item.key+" : "+item.values.length)
+console.log(item.values.length)
+console.log(item.values[0].value.total)
 	
 	
 	db.serialize(function() {
