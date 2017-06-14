@@ -85,7 +85,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.iden
 ///////////////////////////////		
 
 					
-//db.run("DELETE FROM data2");					
+db.run("DELETE FROM data2");					
 						
 const exporter = sqliteJSON(db);
 					
