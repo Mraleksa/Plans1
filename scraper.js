@@ -63,7 +63,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,da
 		
 		})
 		.then(function () {	
-		if (p<5){piv ();}		
+		if (p<10){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -71,7 +71,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,da
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 1) {
+				if (p2 < 3) {
 					piv ();
 				}
 				else {
