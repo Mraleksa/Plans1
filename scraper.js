@@ -148,7 +148,7 @@ else {
 					console.log("STOP");
 				     }
 				}, 5000);
-		}		
+		}		 
 							
 		})
 		.catch( function (error) {
