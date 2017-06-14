@@ -77,7 +77,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.iden
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 10) {
+				if (p2 < 1) {
 					piv ();
 				}
 				else {
