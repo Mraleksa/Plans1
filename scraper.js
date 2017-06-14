@@ -71,7 +71,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,da
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 3) {
+				if (p2 < 30) {
 					piv ();
 				}
 				else {
