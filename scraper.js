@@ -7,10 +7,9 @@ var d3 = require("d3");
 var db = new sqlite3.Database("data.sqlite");
 var p=0; var p2=0;
 
-//db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, start) {
-    //  console.log(start); 
 
-var currentCount =  "2017-01-01T00:00:00.008329+03:00"
+
+//var currentCount =  "2017-01-01T00:00:00.008329+03:00"
 
 
 function piv(){  
@@ -149,8 +148,8 @@ else {
 
 }
 
+db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, currentCount) {
+      console.log(currentCount); 
 piv ();	
  
-   
-
- // });
+ });
