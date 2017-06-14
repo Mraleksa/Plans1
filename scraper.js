@@ -69,7 +69,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.iden
 		
 		})
 		.then(function () {	
-		if (p<1){piv ();}		
+		if (p<10){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -77,7 +77,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.iden
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 1) {
+				if (p2 < 100) {
 					piv ();
 				}
 				else {
@@ -85,7 +85,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.iden
 ///////////////////////////////		
 
 					
-//db.run("DELETE FROM data2");					
+db.run("DELETE FROM data2");					
 						
 const exporter = sqliteJSON(db);
 					
