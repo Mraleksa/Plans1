@@ -9,13 +9,14 @@ var p=0; var p2=0;
 
 
 
-//var currentCount =  "2017-01-01T00:00:00.008329+03:00"
+var currentCount =  "2017-01-01T00:00:00.008329+03:00"
 
-db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, timeStart) {
+//db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, timeStart) {
       
-	var currentCount = timeStart.dateModified
-	console.log("старт: "+currentCount); 
-
+	//var currentCount = timeStart.dateModified
+	//console.log("старт: "+currentCount); 
+	//var end  = formatTime(new Date());
+	//console.log("конец: "+end);
 
 function piv(){  
 p++;
@@ -38,20 +39,20 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offse
 					.then(function (data) {
 			
 			 	
-var year = data.getJSON().data.datePublished;
-if(year.replace(/-.*/, "") =="2017"){
+
+if(data.getJSON().data.budget[0].year =="2017"){
 	
 	
 db.serialize(function() {
 
   // Create new table
-  db.run("CREATE TABLE IF NOT EXISTS data (id TEXT,dateModified TEXT,cpv TEXT,nameId TEXT,name TEXT,amount INT,currency TEXT,procurementMethod TEXT,procurementMethodType TEXT,datePublished TEXT)");
+  db.run("CREATE TABLE IF NOT EXISTS data (id TEXT,dateModified TEXT,cpv TEXT,nameId TEXT,name TEXT,amount INT,currency TEXT,procurementMethod TEXT,datePublished TEXT)");
 
   
   // Insert a new record
-  var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?)");
+  var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?)");
 
-statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,data.getJSON().data.procuringEntity.identifier.id,data.getJSON().data.procuringEntity.name,data.getJSON().data.budget.amount,data.getJSON().data.budget.currency,data.getJSON().data.tender.procurementMethod,data.getJSON().data.tender.procurementMethodType,data.getJSON().data.datePublished);
+statement.run(item.id,item.dateModified,data.getJSON().data.classification.id,data.getJSON().data.procuringEntity.identifier.id,data.getJSON().data.procuringEntity.name,data.getJSON().data.budget.amount,data.getJSON().data.budget.currency,data.getJSON().data.tender.procurementMethod,data.getJSON().data.datePublished);
   //else none;
    //console.log(item.dateModified)
   statement.finalize();
@@ -160,4 +161,4 @@ else {
 
 piv ();	
  
-});
+//});
