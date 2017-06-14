@@ -9,16 +9,16 @@ var p=0; var p2=0;
 
 
 
-var currentCount =  "2017-01-01T00:00:00.008329+03:00"
+//var currentCount =  "2017-01-01T00:00:00.008329+03:00"
 
-//db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, timeStart) {
+db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, timeStart) {
       
-	//var currentCount = timeStart.dateModified
+	var currentCount = timeStart.dateModified
 	console.log("старт: "+currentCount); 
 	//var end  = formatTime(new Date());
 	//console.log("конец: "+end);
 
-//db.run("DELETE FROM data");
+db.run("DELETE FROM data");
 	
 function piv(){  
 p++;
@@ -79,7 +79,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.name
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 1) {
+				if (p2 < 10) {
 					piv ();
 				}
 				else {
@@ -113,8 +113,8 @@ nest.forEach(function(item) {
 	
 	
 	db.serialize(function() {
-		db.run("CREATE TABLE IF NOT EXISTS data1 (item TEXT,keyNo TEXT,countNo INT,keyOpen TEXT,countOpen INT)");
-		var statement = db.prepare("INSERT INTO data1 VALUES (?,?,?,?,?)");
+		db.run("CREATE TABLE IF NOT EXISTS data2 (item TEXT,keyNo TEXT,countNo INT,keyOpen TEXT,countOpen INT)");
+		var statement = db.prepare("INSERT INTO data2 VALUES (?,?,?,?,?)");
 
 
 if(item.values.length==2){
@@ -163,4 +163,4 @@ else {
 
 piv ();	
  
-//});
+});
