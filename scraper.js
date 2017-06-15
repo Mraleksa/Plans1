@@ -143,7 +143,7 @@ statement.finalize();
 
 					
 					
-exporter.json('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest1,data_nest2', function (err, data_nest_json) {
+exporter.json('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest1', function (err, data_nest_json) {
 	console.log(data_nest_json);
 })
 				
