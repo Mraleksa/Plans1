@@ -131,7 +131,7 @@ statement.finalize();
 		.sortKeys(d3.ascending)
 		.entries(JSON.parse(json2));
 		
-		console.log(nest2)
+		console.log(JSON.stringify(nest2))
 	})
 						
 });//exporter		
