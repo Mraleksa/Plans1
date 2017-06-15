@@ -144,16 +144,14 @@ statement.finalize();
 					
 					
 exporter.json('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest1', function (err, data_nest1_json) {
-	
-	
-	exporter.json('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest2', function (err, data_nest2_json) {
-	console.log(data_nest1_json);	
-		console.log(data_nest2_json);	
-	})
-	
+	console.log(data_nest1_json);
 })
-					
-		
+exporter.json('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest2', function (err, data_nest2_json) {
+	console.log(data_nest2_json);	
+})					
+exporter.tables(function (err, tables) {
+ 	 console.log(tables);	
+});		
 					
 					
 					
