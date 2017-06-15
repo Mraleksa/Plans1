@@ -78,7 +78,7 @@ db.serialize(function() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////		
 
 					
-//db.run("DELETE FROM data2");					
+db.run("DELETE FROM data2");					
 						
 const exporter = sqliteJSON(db);
 					
@@ -98,11 +98,11 @@ var nest=d3.nest()
 					
 nest.forEach(function(item) {
 	
-db.run("DELETE FROM data_nest2");
+//db.run("DELETE FROM data_nest2");
 	
 db.serialize(function() {
-db.run("CREATE TABLE IF NOT EXISTS data_nest2 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
-var statement = db.prepare("INSERT INTO data_nest2 VALUES (?,?,?,?,?)");
+db.run("CREATE TABLE IF NOT EXISTS data_nest1 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
+var statement = db.prepare("INSERT INTO data_nest1 VALUES (?,?,?,?,?)");
 
 if(item.values.length==2){
 	statement.run(item.key,item.values[0].value.count,item.values[1].value.count,item.values[0].value.total,item.values[1].value.total); 
@@ -130,9 +130,9 @@ statement.finalize();
 
 					
 					
-db.each('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest1,data_nest2', function (err, data_nest_json) {
-	console.log(data_nest_json);
-})
+//db.each('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest1,data_nest2', function (err, data_nest_json) {
+//	console.log(data_nest_json);
+//})
 				
 	
 					
