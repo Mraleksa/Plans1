@@ -84,7 +84,7 @@ statement.run(item.dateModified,data.getJSON().data.procuringEntity.name,data.ge
 				}
 				else {
 					
-///////////////////////////////		
+///////////////////////////////////////////////////////////////////////////////////////////////////		
 
 					
 //db.run("DELETE FROM data2");					
@@ -93,26 +93,24 @@ const exporter = sqliteJSON(db);
 					
 exporter.json('SELECT name,procurementMethod,amount FROM data', function (err, json) {
 						
-						var nest=d3.nest()
-  						  .key(function(d) {return d.name;})
-						  .key(function(d) {return d.procurementMethod;})
-  						  .sortKeys(d3.ascending)
-  						  .rollup(function(v) { return {
-    							 count: v.length, 
-							total: d3.sum(v, function(d) { return d.amount; })
-  						   }; })
-  						  .entries(JSON.parse(json.replace(/limited/g, "open")));
+var nest=d3.nest()
+ .key(function(d) {return d.name;})
+.key(function(d) {return d.procurementMethod;})
+.sortKeys(d3.ascending)
+.rollup(function(v) { return {
+	count: v.length, 
+	total: d3.sum(v, function(d) { return d.amount; })
+}; })
+.entries(JSON.parse(json.replace(/limited/g, "open")));
 						
 
-console.log(JSON.stringify(nest[0]))
-	
 					
 nest.forEach(function(item) {
 
 
 	
 	
-	db.serialize(function() {
+db.serialize(function() {
 		db.run("CREATE TABLE IF NOT EXISTS data1 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
 		var statement = db.prepare("INSERT INTO data1 VALUES (?,?,?,?,?)");
 
@@ -134,17 +132,17 @@ else {
 		
 	
 		statement.finalize();
-	});
+});//db
+
 	
-})						
+	
+})//nest						
 
+					
 						
+});//exporter		
 
-						
-						
-});		
-
-///////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 					console.log("STOP");
 				     }
 				}, 5000);
