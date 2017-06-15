@@ -130,8 +130,8 @@ statement.finalize();
 });//exporter		
 
 					
-	//SELECT rowid AS id, info FROM lorem				
-db.each('SELECT * FROM data_nest1', function (err, data_nest_json) {
+				
+db.each('SELECT * FROM data_nest1 UNION SELECT * FROM data_nest2', function (err, data_nest_json) {
 	console.log(data_nest_json);
 })
 				
