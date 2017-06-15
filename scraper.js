@@ -7,7 +7,7 @@ var d3 = require("d3");
 var db = new sqlite3.Database("data.sqlite");
 var p=0; var p2=0;
 
-//db.run("DELETE FROM data");
+db.run("DELETE FROM data");
 
 var currentCount =  "2017-01-01T00:00:00.008329+03:00"
 
@@ -100,8 +100,8 @@ nest.forEach(function(item) {
 //db.run("DELETE FROM data_nest2");
 	
 db.serialize(function() {
-db.run("CREATE TABLE IF NOT EXISTS data_nest (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
-var statement = db.prepare("INSERT INTO data_nest VALUES (?,?,?,?,?)");
+db.run("CREATE TABLE IF NOT EXISTS data_nest2 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
+var statement = db.prepare("INSERT INTO data_nest2 VALUES (?,?,?,?,?)");
 
 if(item.values.length==2){
 	statement.run(item.key,item.values[0].value.count,item.values[1].value.count,item.values[0].value.total,item.values[1].value.total); 
