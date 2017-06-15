@@ -132,7 +132,7 @@ statement.finalize();
 					
 
 	
-db.each('create temp table newtab1 as Select a.item, sum(a.countNo) from ( SELECT * FROM data_nest1 UNION ALL SELECT * FROM data_nest2) a group by a.item', function (err, data_nest_json) {
+db.run('SELECT * FROM data_nest1 UNION ALL SELECT * FROM data_nest2', function (err, data_nest_json) {
 	console.log(data_nest_json);
 })
 				
