@@ -92,7 +92,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.name
 const exporter = sqliteJSON(db);
 					
 exporter.json('SELECT name,procurementMethod FROM data', function (err, json) {
-console.log(json[0])						
+console.log(JSON.parse(json[0]))						
 						var nest=d3.nest()
   						  .key(function(d) {return d.name;})
 						  .key(function(d) {return d.procurementMethod;})
