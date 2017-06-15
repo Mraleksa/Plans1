@@ -97,7 +97,7 @@ var nest=d3.nest()
 					
 nest.forEach(function(item) {
 	
-db.run("DELETE FROM data_nest2");
+//db.run("DELETE FROM data_nest2");
 	
 db.serialize(function() {
 db.run("CREATE TABLE IF NOT EXISTS data_nest1 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
@@ -124,6 +124,15 @@ statement.finalize();
 	
 })//nest						
 
+	
+	exporter.json('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest1', function (err, json2) {
+		var nest2=d3.nest()
+		 .key(function(d) {return d.item;})
+		.sortKeys(d3.ascending)
+		.entries(JSON.parse(json2));
+		
+		console.log(nest2)
+	})
 						
 });//exporter		
 
