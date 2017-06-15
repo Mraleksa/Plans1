@@ -130,8 +130,8 @@ statement.finalize();
 });//exporter		
 
 					
-					
-db.each('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest1', function (err, data_nest_json) {
+	//SELECT rowid AS id, info FROM lorem				
+db.each('SELECT rowid AS item,countNo,countOpen,totalNo,totalOpen FROM data_nest1', function (err, data_nest_json) {
 	console.log(data_nest_json);
 })
 				
