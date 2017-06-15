@@ -100,8 +100,8 @@ nest.forEach(function(item) {
 //db.run("DELETE FROM data_nest2");
 	
 db.serialize(function() {
-db.run("CREATE TABLE IF NOT EXISTS data_nest2 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
-var statement = db.prepare("INSERT INTO data_nest2 VALUES (?,?,?,?,?)");
+db.run("CREATE TABLE IF NOT EXISTS data_nest1 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
+var statement = db.prepare("INSERT INTO data_nest1 VALUES (?,?,?,?,?)");
 
 if(item.values.length==2){
 	statement.run(item.key,item.values[0].value.count,item.values[1].value.count,item.values[0].value.total,item.values[1].value.total); 
@@ -130,9 +130,23 @@ statement.finalize();
 });//exporter		
 
 					
-				
-db.each('SELECT * FROM data_nest1 UNION SELECT * FROM data_nest2', function (err, data_nest_json) {
-	console.log(data_nest_json);
+
+	
+exporter.json('SELECT * FROM data_nest1', function (err, json1) {
+var nest1=d3.nest()
+ .key(function(d) {return d.item;})
+.key(function(d) {return d.procurementMethod;})
+.sortKeys(d3.ascending)
+.rollup(function(v) { return {
+	countNo: d3.sum(v, function(d) { return d.countNo; }),
+	countOpen: d3.sum(v, function(d) { return d.countOpen; }),
+	totalNo: d3.sum(v, function(d) { return d.totalNo; }),
+	totalOpen: d3.sum(v, function(d) { return d.totalOpen; })
+}; })
+.entries(JSON.parse(json1));
+	
+	console.log(JSON.stringify(nest1))
+	
 })
 				
 	
