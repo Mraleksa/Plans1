@@ -95,7 +95,7 @@ exporter.json('SELECT name,procurementMethod FROM data', function (err, json) {
 						
 						var nest=d3.nest()
   						  .key(function(d) {return d.name;})
-						  .key(function(d) {return d.procurementMethod;})
+						  //.key(function(d) {return d.procurementMethod;})
   						  .sortKeys(d3.ascending)
   						  .rollup(function(v) { return {
     							 count: v.length, 
