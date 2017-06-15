@@ -71,7 +71,7 @@ statement.run(item.id,item.dateModified,data.getJSON().data.procuringEntity.name
 		
 		})
 		.then(function () {	
-		if (p<5){piv ();}		
+		if (p<1){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -105,11 +105,11 @@ exporter.json('SELECT name,procurementMethod FROM data', function (err, json) {
 						
 
 
-	
+console.log(JSON.stringify(nest[0]))	
 					
 nest.forEach(function(item) {
 
-console.log(item.values[0].value.total)
+
 	
 	
 	db.serialize(function() {
