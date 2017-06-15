@@ -150,7 +150,8 @@ exporter.json('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest2',
 	console.log(data_nest2_json);	
 })					
 exporter.tables(function (err, tables) {
- 	 console.log(tables);	
+	console.log(tables[1]);
+ 	 console.log(tables.data_nest1);	
 });		
 					
 					
