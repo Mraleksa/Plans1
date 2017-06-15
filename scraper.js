@@ -104,7 +104,7 @@ nest.forEach(function(item) {
 db.serialize(function() {
 		db.run("CREATE TABLE IF NOT EXISTS data_nest (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
 			
-		var statement = db.prepare("INSERT INTO data_nest VALUES (?,?,?,?,?)");
+		var statement = db.prepare("UPDATE INTO data_nest VALUES (?,?,?,?,?)");
 
 
 if(item.values.length==2){
