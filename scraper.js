@@ -97,7 +97,9 @@ var nest=d3.nest()
 
 					
 nest.forEach(function(item) {
-db.run("DELETE FROM data_nest2");	
+	
+db.run("DELETE FROM data_nest2");
+	
 db.serialize(function() {
 db.run("CREATE TABLE IF NOT EXISTS data_nest2 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
 var statement = db.prepare("INSERT INTO data_nest2 VALUES (?,?,?,?,?)");
@@ -125,16 +127,29 @@ statement.finalize();
 
 
 	
-//db.each("SELECT item FROM data_nest1 ORDER BY item LIMIT 1", function(err, row) {	
-db.run("SELECT item, countNo,countOpen,totalNo,totalOpen FROM data_nest1 UNION SELECT item, countNo,countOpen,totalNo,totalOpen FROM data_nest2", function(err, row) {	
- 	console.log(row)    
-});	
 	
-
+	
+	
+	
+	
+	
+//db.each("SELECT item FROM data_nest1 ORDER BY item LIMIT 1", function(err, row) {	
+//db.each("SELECT item, countNo,countOpen,totalNo,totalOpen FROM data_nest1 UNION SELECT item, countNo,countOpen,totalNo,totalOpen FROM data_nest2", function(err, row) {	
+// 	console.log(row)    
+//});	
 	
 						
 });//exporter		
 
+					
+					
+exporter.json('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest1', function (err, data_nest1_json) {
+	console.log(data_nest1_json);	
+})
+					
+exporter.json('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest2', function (err, data_nest2_json) {
+	console.log(data_nest2_json);	
+})					
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 					console.log("STOP");
 				     }
