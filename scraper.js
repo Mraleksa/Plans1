@@ -130,8 +130,7 @@ db.each("SELECT item, countNo,countOpen,totalNo,totalOpen FROM data_nest1 UNION 
  	console.log(row)    
 });	
 	
-	
-db.run("DELETE FROM data_nest2");	
+
 	
 						
 });//exporter		
