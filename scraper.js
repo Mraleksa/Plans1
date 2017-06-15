@@ -125,25 +125,12 @@ statement.finalize();
 	
 })//nest						
 
-
-	
-	
-	
-	
-	
-	
-	
-//db.each("SELECT item FROM data_nest1 ORDER BY item LIMIT 1", function(err, row) {	
-//db.each("SELECT item, countNo,countOpen,totalNo,totalOpen FROM data_nest1 UNION SELECT item, countNo,countOpen,totalNo,totalOpen FROM data_nest2", function(err, row) {	
-// 	console.log(row)    
-//});	
-	
 						
 });//exporter		
 
 					
 					
-db.each('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest1', function (err, data_nest_json) {
+db.each('SELECT item,countNo,countOpen,totalNo,totalOpen FROM data_nest1,data_nest2', function (err, data_nest_json) {
 	console.log(data_nest_json);
 })
 				
