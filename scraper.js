@@ -102,10 +102,8 @@ nest.forEach(function(item) {
 	
 	
 db.serialize(function() {
-		//db.run("CREATE TABLE IF NOT EXISTS data_nest2 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
-		db.run("UPDATE data_nest where item='Зеленська сільська рада'");	
-		var statement = db.prepare("INSERT INTO data_nest VALUES (?,?,?,?,?)");
-
+db.run("CREATE TABLE IF NOT EXISTS data_nest2 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
+var statement = db.prepare("INSERT INTO data_nest2 VALUES (?,?,?,?,?)");
 
 if(item.values.length==2){
 	statement.run(item.key,item.values[0].value.count,item.values[1].value.count,item.values[0].value.total,item.values[1].value.total); 
@@ -121,9 +119,7 @@ else {
 		statement.run(item.key,0,item.values[0].value.count,0,item.values[0].value.total);
 	}
 }
-		
-	
-		statement.finalize();
+statement.finalize();
 });//db
 
 	
