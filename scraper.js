@@ -86,7 +86,6 @@ exporter.json('SELECT name,procurementMethod,amount FROM data', function (err, j
 var nest=d3.nest()
  .key(function(d) {return d.name;})
 .key(function(d) {return d.procurementMethod;})
-.sortKeys(d3.ascending)
 .rollup(function(v) { return {
 	count: v.length, 
 	total: d3.sum(v, function(d) { return d.amount; })
@@ -113,7 +112,7 @@ else {
 		statement.run(item.key,item.values[0].value.count,0,item.values[0].value.total,0);
 	}
 	if(item.values[0].key=="open"){
-		//console.log("open")
+		
 		statement.run(item.key,0,item.values[0].value.count,0,item.values[0].value.total);
 	}
 }
@@ -124,9 +123,13 @@ statement.finalize();
 	
 })//nest						
 
-	
+	exporter.json('SELECT * FROM data_nest', function (err, data_nest_json) {
+		console.log(data_nest_json)
+	})
 
-						
+	exporter.json('SELECT * FROM data_nest2', function (err, data_nest_json2) {
+		console.log(data_nest_json2)
+	})					
 });//exporter		
 
 					
