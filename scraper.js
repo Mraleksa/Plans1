@@ -62,7 +62,7 @@ db.serialize(function() {
 		
 		})
 		.then(function () {	
-		if (p<1){piv ();}		
+		if (p<10){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -70,7 +70,7 @@ db.serialize(function() {
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 1) {
+				if (p2 < 100) {
 					piv ();
 				}
 				else {
@@ -131,10 +131,7 @@ statement.finalize();
 
 					
 
-	
-db.run('SELECT * FROM data_nest1 UNION ALL SELECT * FROM data_nest2', function (err, data_nest_json) {
-	console.log(data_nest_json);
-})
+
 				
 	
 					
