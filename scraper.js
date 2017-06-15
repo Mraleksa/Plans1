@@ -9,8 +9,8 @@ var p=0; var p2=0;
 
 db.run("DELETE FROM data");
 
-//var currentCount =  "2017-01-01T00:00:00.008329+03:00"
-var currentCount =  "2017-01-02T16:08:55.174388+03:00"
+var currentCount =  "2017-01-01T00:00:00.008329+03:00"
+
 //db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, timeStart) {
       
 	//var currentCount = timeStart.dateModified
@@ -97,13 +97,10 @@ var nest=d3.nest()
 
 					
 nest.forEach(function(item) {
-
-
-	
 	
 db.serialize(function() {
-db.run("CREATE TABLE IF NOT EXISTS data_nest3 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
-var statement = db.prepare("INSERT INTO data_nest3 VALUES (?,?,?,?,?)");
+db.run("CREATE TABLE IF NOT EXISTS data_nest1 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
+var statement = db.prepare("INSERT INTO data_nest1 VALUES (?,?,?,?,?)");
 
 if(item.values.length==2){
 	statement.run(item.key,item.values[0].value.count,item.values[1].value.count,item.values[0].value.total,item.values[1].value.total); 
