@@ -78,7 +78,6 @@ db.serialize(function() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////		
 
 					
-db.run("DELETE FROM data2");					
 						
 const exporter = sqliteJSON(db);
 					
@@ -98,7 +97,7 @@ var nest=d3.nest()
 					
 nest.forEach(function(item) {
 	
-//db.run("DELETE FROM data_nest2");
+db.run("DELETE FROM data_nest2");
 	
 db.serialize(function() {
 db.run("CREATE TABLE IF NOT EXISTS data_nest1 (item TEXT,countNo INT,countOpen INT,totalNo INT,totalOpen INT)");
