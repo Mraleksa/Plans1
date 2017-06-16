@@ -7,7 +7,7 @@ var d3 = require("d3");
 var db = new sqlite3.Database("data.sqlite");
 var p=0; var p2=0;
 
-db.run("DELETE FROM data");
+//db.run("DELETE FROM data");
 
 var currentCount =  "2017-01-01T00:00:00.008329+03:00"
 
