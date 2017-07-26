@@ -48,7 +48,6 @@ db.serialize(function() {
 	db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,name TEXT,id TEXT,amount INT,procurementMethod TEXT)");
 	var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?)");
 	var name = data.getJSON().data.procuringEntity.name.toLowerCase();
-	console.log(name)
 	statement.run(item.dateModified,name,data.getJSON().data.procuringEntity.identifier.id,data.getJSON().data.budget.amount,data.getJSON().data.tender.procurementMethod);
 	statement.finalize();
 });
