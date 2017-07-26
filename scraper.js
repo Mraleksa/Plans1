@@ -63,7 +63,7 @@ db.serialize(function() {
 		
 		})
 		.then(function () {	
-		if (p<3){piv ();}		
+		if (p<10){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -71,7 +71,7 @@ db.serialize(function() {
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 2) {
+				if (p2 < 20) {
 					piv ();
 				}
 				else {
