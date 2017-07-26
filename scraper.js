@@ -9,11 +9,11 @@ var p=0; var p2=0;
 
 //db.run("DELETE FROM data");
 
-//var currentCount =  "2017-04-10T17:30:40.739639+03:00"
+var currentCount =  "2017-00-00T00:00:00.739639+03:00"
 
-db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, timeStart) {
+//db.each("SELECT dateModified FROM data ORDER BY dateModified DESC LIMIT 1", function(err, timeStart) {
       
-	var currentCount = timeStart.dateModified
+	//var currentCount = timeStart.dateModified
 	console.log("старт: "+currentCount); 
 	//var end  = formatTime(new Date());
 	//console.log("конец: "+end);
@@ -47,7 +47,8 @@ if(data.getJSON().data.budget.year =="2017"){
 db.serialize(function() {
 	db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,name TEXT,amount INT,procurementMethod TEXT)");
 	var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?)");
-	statement.run(item.dateModified,data.getJSON().data.procuringEntity.name,data.getJSON().data.budget.amount,data.getJSON().data.tender.procurementMethod);
+	var name = data.getJSON().data.procuringEntity.name.toLowerCase();
+	statement.run(item.dateModified,name,data.getJSON().data.budget.amount,data.getJSON().data.tender.procurementMethod);
 	statement.finalize();
 });
 
@@ -62,7 +63,7 @@ db.serialize(function() {
 		
 		})
 		.then(function () {	
-		if (p<10){piv ();}		
+		if (p<3){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -70,7 +71,7 @@ db.serialize(function() {
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 50) {
+				if (p2 < 2) {
 					piv ();
 				}
 				else {
@@ -92,4 +93,4 @@ db.serialize(function() {
 
 piv ();	
  
-});
+//});
